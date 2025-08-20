@@ -16,7 +16,19 @@ This project is designed for low-latency FX data processing using modern Java te
 - **Kafka Streams 3.7.0** - Stream processing capabilities
 - **Jackson 2.17.1** - JSON serialization/deserialization
 - **Micrometer 1.12.5** - Application metrics and monitoring
-
+-
+## Architecture
+![Architecture](/assets/fx_sys_arch.png)
+-
+## Data Process Flow
+![process flow](/assets/fx_dataproc_flow.png)
+-
+## Components
+![components](/assets/fx_component.png)
+-
+## Tech stack
+![tech stack](/assets/fx_techstack.png)
+-
 ## Key Dependencies
 
 ### Core Frameworks
