@@ -1,0 +1,39 @@
+# application.yml
+server:
+  port: 8080
+  netty:
+    connection-timeout: 2s
+    idle-timeout: 30s
+
+spring:
+  kafka:
+    bootstrap-servers: localhost:9092
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      acks: 1
+      retries: 0
+      batch-size: 16384
+      linger-ms: 1
+      buffer-memory: 33554432
+    consumer:
+      group-id: fx-processor
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      auto-offset-reset: latest
+      enable-auto-commit: false
+      properties:
+        spring.json.trusted.packages: "*"
+    streams:
+      application-id: fx-stream-processor
+      default-key-serde: org.apache.kafka.common.serialization.Serdes$StringSerde
+      default-value-serde: org.springframework.kafka.support.serializer.JsonSerde
+      properties:
+        processing.guarantee: at_least_once
+        cache.max.bytes.buffering: 0
+        commit.interval.ms: 100
+
+logging:
+  level:
+    org.apache.kafka: WARN
+    org.springframework.kafka: INFO
